@@ -1,5 +1,5 @@
 from logging import config
-import requests
+from turtle import st
 from config import Config
 from openai import OpenAI
 from typing_extensions import override
@@ -68,21 +68,21 @@ def main():
 
     root = tk.Tk()
     root.title("Drexel Bot")
-
+    root.minsize(300, 200)
     frame = tk.Frame(root)
-    frame.pack(padx=10, pady=10)
-
+    frame.pack(padx=10, pady=10,expand="yes", fill=tk.BOTH,)
+    
     user_input = tk.StringVar()
 
-    entry = tk.Entry(frame, textvariable=user_input, width=50)
-    entry.grid(row=0, column=0, padx=5, pady=5)
+    entry = tk.Entry(frame, textvariable=user_input)
+    entry.pack(padx=5, pady=5, expand=True, fill=tk.BOTH)
     entry.bind("<Return>", ask_question)
      
     ask_button = tk.Button(frame, text="Ask", command=ask_question)
-    ask_button.grid(row=0, column=1, padx=5, pady=5)
+    ask_button.pack(padx=5, pady=5, expand=True, fill=tk.BOTH)
 
-    output_text = scrolledtext.ScrolledText(frame, wrap=tk.WORD, width=60, height=20)
-    output_text.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
+    output_text = scrolledtext.ScrolledText(frame, wrap=tk.WORD)
+    output_text.pack(padx=5, pady=5, expand=True, fill=tk.BOTH)
 
     root.mainloop()
 
